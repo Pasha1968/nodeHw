@@ -2,9 +2,10 @@
   "name": "nodeDZ",
   "version": "1.0.0",
   "dependencies": {
+    "directory-tree": "^2.2.7",
     "express": "^4.17.0"
   },
   "scripts": {
-  	"start" :"node app.js"
+    "start": "node app.js"
   }
 }
