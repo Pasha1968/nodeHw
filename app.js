@@ -8,7 +8,7 @@ app.use(express.static(__dirname + "/public"));
   
 // app.get("/:path", function(req, res){
 app.get("/", function(req, res){
-    var responce
+    var responce = {}
    // const path = req.params.path;
     const path = req.param('path');
     const tree = dirTree(path);
@@ -17,10 +17,15 @@ app.get("/", function(req, res){
         res.send(
             tree.path
         )
+    } else if (tree.type == "directory") {
+        console.log("directory chel");
+        for (let i = 0; i < tree.children.length; i++) {
+            responce[i] = tree.children[i].name;
+        }
+        res.send(
+            responce
+        )
     }
-    res.send({
-        tree
-    })
     console.log(path);
     // fs.readdir(path, (err, files) => {
     //   files.forEach(file => {
